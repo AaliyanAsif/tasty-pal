@@ -4,6 +4,7 @@ export default function SearchBar({ query, setQuery }) {
   return (
     <div>
       <input
+        name="search-bar"
         className="search-bar"
         placeholder="Search your reciepe "
         type="text"
