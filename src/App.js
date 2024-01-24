@@ -2,40 +2,28 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 
-const KEY = "75381cdd0ba840c084b5e13a74aa9e73";
+const KEY = "ac809abf3f644f15884a69a96aa88f9c";
 
 function App() {
   const [recipe, setRecipe] = useState([]);
   const [query, setQuery] = useState("");
-  const [selectedId, setSelectedId] = useState(null);
-  const tempQuery = "pizza";
-
-  function handleSelectRecipe(id) {
-    setSelectedId(id);
-  }
 
   useEffect(() => {
     async function fetchRecipes() {
       const res = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&query=${tempQuery}.`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&query=${query}.`
       );
       const data = await res.json();
       const results = data.results;
 
       setRecipe(results);
-      console.log(results);
     }
     fetchRecipes();
   }, [query]);
   return (
     <div className="App">
       <Navbar query={query} setQuery={setQuery} />
-      <Main
-        recipe={recipe}
-        onSelectRecipe={handleSelectRecipe}
-        selectedId={selectedId}
-        apiKey={KEY}
-      />
+      <Main recipe={recipe} apiKey={KEY} />
     </div>
   );
 }

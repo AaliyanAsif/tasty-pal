@@ -5,20 +5,30 @@ export default function Recipe({ id, title, img, onSelectRecipe }) {
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
-    margin: "20px",
-    backgroundColor: "#F5F5DC",
-    padding: "10px",
+    margin: "20px 20px 20px 0",
+    paddingRight: "10px",
+    backgroundColor: "#FF6347",
+    color: "#ffffff",
   };
 
   const imgStyle = {
-    width: "100px",
-    margin: "10px",
+    width: "200px",
+    margin: "0 10px 0 0",
+  };
+
+  const nameStyle = {
+    margin: 0,
+    fontSize: "1.5rem",
   };
 
   return (
-    <div style={reciepeStyle} onClick={() => onSelectRecipe(id)}>
+    <div
+      style={reciepeStyle}
+      className="hover"
+      onClick={() => onSelectRecipe(id)}
+    >
       <img style={imgStyle} src={img} alt={`${title}  `} />
-      <h3>{title}</h3>
+      <h3 style={nameStyle}>{title}</h3>
     </div>
   );
 }
